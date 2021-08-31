@@ -37,7 +37,7 @@
           </div>
         </div>
         <div class="card-body">
-          Start creating your amazing application!
+          Welcome to temp branch
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
