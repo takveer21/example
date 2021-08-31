@@ -88,12 +88,24 @@
                     <label>Product Tags</label>
                     <textarea class="form-control" name="tags" placeholder="Enter Product Tags"></textarea>
                   </div>
-                  <div class="input_fields_wrap">
-                    <button class="add_field_button">Add More Fields</button>
+                  <div class="form-group input_fields_wrap">
+                    <button class="btn btn-primary add_field_button mb-2">Add More Fields</button>
+                    <div class="form-row">
+                        <div class="col-4">
+                            <input type="file" class="form-control" name="image[]">
+                        </div>
+                        <div class="col-4">
+                            <select class="form-control" name="image_type[]">
+                                <option>Select Type</option>
+                                <option value="big">Big</option>
+                                <option value="thumb">Thumb</option>
+                            </select>
+                        </div>
+                      </div>
                     <div>
-                      <input type="text" name="mytext[1]">
-                      <input type="date" name="mydate[1]">
-                      <select name="myselect[1]"><option>Please Select</option></select>
+                      {{-- <input type="text" class="form-control" name="mytext[1]">
+                      <input type="date" class="form-control" name="mydate[1]">
+                      <select name="myselect[1]"><option>Please Select</option></select> --}}
                   </div>
                 </div>
                   <div class="form-group">
@@ -120,24 +132,27 @@
     <!-- /.content -->
   </div>
 
-  <script>
-      $(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
-    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
-    var add_button      = $(".add_field_button"); //Add button ID
 
-    var x = 1; //initlal text box count
-    $(add_button).click(function(e){ //on add input button click
-        e.preventDefault();
-        if(x < max_fields){ //max input box allowed
-            x++; //text box increment
-            $(wrapper).append('<div> <input type="text" name="mytext[' + x + ']"/> <input type="date" name="mydate[' + x + ']"/> <select name="myselect[' + x + ']"><option>Please Select</option></select> <a href="#" class="remove_field">Remove</a> </div>'); // add input boxes.
-        }
-    });
+@endsection
+@section('extra_js')
+<script>
+  $(document).ready(function() {
+var max_fields      = 10; //maximum input boxes allowed
+var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+var add_button      = $(".add_field_button"); //Add button ID
 
-    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent('div').remove(); x--;
-    })
+var x = 1; //initlal text box count
+$(add_button).click(function(e){ //on add input button click
+    e.preventDefault();
+    if(x < max_fields){ //max input box allowed
+        x++; //text box increment
+        $(wrapper).append('<div class="form-row"><div class="col-4"> <input type="file" class="form-control" name="image[]"></div><div class="col-4"> <select name="image_type[]" class="form-control"><option>Select Type</option><option value="big">Big</option><option value="thumb">Thumb</option></select></div> <div class="col-2"><a href="#" class="remove_field">Remove</a></div></div>'); // add input boxes.
+    }
 });
-      </script>
+
+$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+    e.preventDefault(); $(this).parent().parent().remove(); x--;
+})
+});
+  </script>
 @endsection

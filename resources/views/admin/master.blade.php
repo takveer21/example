@@ -86,5 +86,6 @@
       });
     });
 </script>
+@yield('extra_js')
 </body>
 </html>

@@ -70,6 +70,7 @@
                         <td>{{$product->status == 1 ? 'Active' : 'Inactive'}}</td>
                         <td>{{date('d/m/Y', strtotime($product->created_at))}}</td>
                         <td>
+                        <a href="{{url('product/'.$product->id)}}" class="btn btn-xs btn-primary">Details</a>
                         <a href="{{url('edit-brand/'.$product->id)}}" class="btn btn-xs btn-info">Edit</a>
                         <a href="{{url('delete-brand/'.$product->id)}}" class="btn btn-xs btn-danger">Delete</a>
                         </td>

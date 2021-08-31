@@ -53,3 +53,4 @@ Route::post('/edit-brand/{id}',[BrandController::class,'editAction']);
 Route::get('/products',[ProductController::class,'index']);
 Route::get('/create-products',[ProductController::class,'create']);
 Route::post('/create-products',[ProductController::class,'createAction']);
+Route::get('/product/{id}',[ProductController::class,'detail']);
