@@ -8,11 +8,13 @@ use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Image;
 class ProductController extends Controller
 {
     public function index(){
-        $products = Product::all();
+        $products = Product::with('category','user')->get();
+        // return $products;
         return view('admin.product.index',compact('products'));
     }
 
@@ -55,6 +57,12 @@ class ProductController extends Controller
     }
 
     public function detail($id){
-        return view('admin.product.detail');
+        $product = Product::with('category','brand','productImage')->find($id);
+        // $product = DB::table('products')
+        //             ->join('categories','products.category_id','=','categories.id')
+        //             ->where('products.id',$id)
+        //             ->get();
+        // return $product;
+        return view('admin.product.detail',compact('product'));
     }
 }

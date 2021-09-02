@@ -54,19 +54,22 @@
                     <th>Product Name</th>
                     <th>Product Category</th>
                     <th>Product Regular Price</th>
+                    <th>Operator</th>
                     <th>Status</th>
                     <th>Date</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
+                      {{-- {{dd($products)}} --}}
                     @php($i=1)
                     @foreach($products as $product)
                     <tr>
                         <td>{{$i++}}</td>
                         <td>{{$product->product_name}}</td>
-                        <td>{{$product->category_id}}</td>
+                        <td>{{$product->category->category_name}}</td>
                         <td>{{$product->regular_price}}</td>
+                        <td>{{$product->user->name}}</td>
                         <td>{{$product->status == 1 ? 'Active' : 'Inactive'}}</td>
                         <td>{{date('d/m/Y', strtotime($product->created_at))}}</td>
                         <td>
@@ -82,7 +85,8 @@
                     <th>Sl.</th>
                     <th>Product Name</th>
                     <th>Product Category</th>
-                    <th>Product Image</th>
+                    <th>Product Regular Price</th>
+                    <th>Operator</th>
                     <th>Status</th>
                     <th>Date</th>
                     <th>Action</th>

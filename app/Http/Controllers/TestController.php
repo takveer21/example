@@ -2,31 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Product;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
-//    public function about(){
-//        $name = "Sakib khan";
-//        $phone = "01789393933";
-//
-////        return view('about',compact('name','phone'));
-//        return view('about',[
-//            'name' => $name,
-//            'phone' => $phone
-//        ]);
-//    }
-//
-//    public function profile(){
-//        return view('profile.profile');
-//    }
-//
-//    public function myProfile(Request $request){
-//        return $request->name;
-//    }
 
     public function home(){
-        return view('public.home.index');
+        $sliders = Slider::where('status',1)->get();
+        $brands = Brand::where('status',1)->get();
+        $products = Product::with('productImage')->where('status',1)->get();
+
+        return view('public.home.index',compact('sliders','brands','products'));
     }
 
     public function shop(){
