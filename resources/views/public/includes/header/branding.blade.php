@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="logo">
-                    <h1><a href="./"><img src="{{asset('/')}}public/img/logo.png"></a></h1>
+                    <h1><a href="{{route('home')}}"><img src="{{asset('/')}}public/img/logo.png"></a></h1>
                 </div>
             </div>
 

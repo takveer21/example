@@ -19,8 +19,10 @@ use App\Http\Controllers\SliderController;
 */
 
 Route::get('/', [TestController::class,'home'])->name('home');
-Route::get('/shop', [TestController::class,'shop'])->name('home');
-Route::get('/product', [TestController::class,'product'])->name('home');
+Route::get('/shop', [TestController::class,'shop'])->name('shop');
+Route::get('/product/{id}/{name}', [TestController::class,'product'])->name('product');
+Route::get('/brand/{id}', [TestController::class,'brand'])->name('brand');
+Route::get('/category/{id}', [TestController::class,'category'])->name('category');
 
 Route::get('/dashboard', function () {
     return view('admin.home.home');
