@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,13 @@ Route::get('/shop', [TestController::class,'shop'])->name('shop');
 Route::get('/product/{id}/{name}', [TestController::class,'product'])->name('product');
 Route::get('/brand/{id}', [TestController::class,'brand'])->name('brand');
 Route::get('/category/{id}', [TestController::class,'category'])->name('category');
+
+//cart
+Route::post('/add-to-cart',[CartController::class,'addToCart']);
+Route::get('/cart',[CartController::class,'showCart']);
+Route::get('/remove-cart/{id}',[CartController::class,'removeCart']);
+Route::post('/update-cart',[CartController::class,'updateCart']);
+
 
 Route::get('/dashboard', function () {
     return view('admin.home.home');
@@ -55,4 +63,4 @@ Route::post('/edit-brand/{id}',[BrandController::class,'editAction']);
 Route::get('/products',[ProductController::class,'index']);
 Route::get('/create-products',[ProductController::class,'create']);
 Route::post('/create-products',[ProductController::class,'createAction']);
-Route::get('/product/{id}',[ProductController::class,'detail']);
+Route::get('/admin-product/{id}',[ProductController::class,'detail']);
