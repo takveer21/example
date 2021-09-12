@@ -3,6 +3,8 @@
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
@@ -31,6 +33,18 @@ Route::get('/cart',[CartController::class,'showCart']);
 Route::get('/remove-cart/{id}',[CartController::class,'removeCart']);
 Route::post('/update-cart',[CartController::class,'updateCart']);
 
+//checkout
+Route::get('/checkout',[CheckoutController::class,'index']);
+
+
+//Signup
+Route::get('/customer-sign-up',[CustomerController::class,'signup']);
+Route::post('/customer-sign-up',[CustomerController::class,'signupAction']);
+
+//login
+Route::get('/customer-login',[CustomerController::class,'login']);
+Route::post('/customer-login',[CustomerController::class,'loginAction']);
+Route::get('/logout',[CustomerController::class,'logout']);
 
 Route::get('/dashboard', function () {
     return view('admin.home.home');

@@ -77,7 +77,7 @@
                                         <td class="actions" colspan="6">
 
                                             <input type="submit" value="Update Cart" name="update_cart" class="button">
-                                            <a type="button" class="checkout-button button alt wc-forward">Checkout</a>
+                                            <a href="{{url('/checkout')}}" class="btn btn-info">Checkout</a>
                                         </td>
                                     </tr>
                                 </tbody>
