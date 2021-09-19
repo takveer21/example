@@ -64,5 +64,20 @@
 <!-- Slider -->
 <script type="text/javascript" src="{{asset('/')}}public/js/bxslider.min.js"></script>
 <script type="text/javascript" src="{{asset('/')}}public/js/script.slider.js"></script>
+
+<script>
+    $(document).ready(function(){
+        console.log('test');
+        $(".shipping_address").hide();
+        $(".input-checkbox").click(function() {
+            if($(this).is(":checked")) {
+                $(".shipping_address").show();
+            } else {
+                $(".shipping_address").hide();
+            }
+        });
+    });
+
+</script>
 </body>
 </html>

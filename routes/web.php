@@ -35,6 +35,8 @@ Route::post('/update-cart',[CartController::class,'updateCart']);
 
 //checkout
 Route::get('/checkout',[CheckoutController::class,'index']);
+Route::post('/order-post',[CheckoutController::class,'orderAction'])->name('order-post');
+Route::get('/order-success',[CheckoutController::class,'orderSuccess']);
 
 
 //Signup
