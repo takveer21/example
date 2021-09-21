@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
@@ -80,3 +81,8 @@ Route::get('/products',[ProductController::class,'index']);
 Route::get('/create-products',[ProductController::class,'create']);
 Route::post('/create-products',[ProductController::class,'createAction']);
 Route::get('/admin-product/{id}',[ProductController::class,'detail']);
+
+//orders
+Route::get('/order-list',[OrderController::class,'index']);
+Route::get('/order-details/{id}',[OrderController::class,'orderDetails']);
+Route::get('/order-status/{id}',[OrderController::class,'orderStatus']);
